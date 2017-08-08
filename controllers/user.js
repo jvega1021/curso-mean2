@@ -120,10 +120,45 @@ function updateUser(req, res){
      });
 }
 
+function uploadImage(req, res){
+    var userId = req.params.id;
+    //var file_name = 'No subido...';
+
+    if (req.files) {
+        var file_path = req.files.image.path;
+        var file_split = file_path.split('/'); //Divide la ruta de la imagen en un vector
+        var file_name = file_split[2]; //Captura el nombre de la imagen con la que fue guardada
+        var ext_split = file_name.split('.'); //Hace un nuevo array en donde se captura la extension de la imagen
+        var file_ext = ext_split[1]; //Captura la extension de la imagen
+
+        console.log(file_ext);
+
+        if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg') {
+
+            User.findByIdAndUpdate(userId, {image: file_name}, (err, userUpdated) => {
+                if (!userUpdated) {
+                    res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+                }
+                else {
+                    res.status(404).send({user: userUpdated});
+                }
+            });
+        }
+        else {
+            res.status(200).send({message: 'Extension del archivo no valida.'});
+        }
+    }
+    else {
+        res.status(200).send({message: 'No has subido ninguna imagen'});
+    }
+
+}
+
 
 module.exports = {
     pruebas,
     saveUser,
     loginUser,
-    updateUser
+    updateUser,
+    uploadImage
 };
