@@ -1,0 +1,24 @@
+{
+    "node": true, // Enable globals available when code is running inside of the NodeJS runtime environment.
+    "browser": true, // Standard browser globals e.g. `window`, `document`.
+    "esnext": true, // Allow ES.next specific features such as `const` and `let`.
+    "immed": true, // Require immediate invocations to be wrapped in parens e.g. `( function(){}() );`
+    "latedef": true, // Prohibit variable use before definition.
+    "newcap": true, // Require capitalization of all constructor functions e.g. `new F()`.
+    "noarg": true, // Prohibit use of `arguments.caller` and `arguments.callee`.
+    "regexp": true, // Prohibit `.` and `[^...]` in regular expressions.
+    "undef": true, // Require all non-global variables be declared before they are used.
+    "unused": true, // Warn unused variables.
+    "strict": true, // Require `use strict` pragma in every file.
+    "smarttabs": true, // Suppresses warnings about mixed tabs and spaces
+    "globals": { // Globals variables.
+        "angular": true,
+        "exports": true,
+        "console": true,
+        "module": true,
+        "confirm": true,
+        "$":true
+    },
+    "noempty": true // Prohibit use of empty blocks.
+
+}
