@@ -1,8 +1,12 @@
-'use stric';
+'use strict';
 
 var bcrypt = require('bcrypt-nodejs'); //Trayendo el modulo para encriptar contraseñas
 var User = require('../models/user'); //Trayendo el modelo ya creado
 var jwt = require('../services/jwt');
+
+function pruebas(req, res){
+    res.status(200).send({message: 'Probando una acción del controlador de usuarios del API Rest con Node y MongoDB'});
+}
 
 function saveUser(req, res){
     //Método para el registro de usuarios
@@ -10,7 +14,7 @@ function saveUser(req, res){
 
     var params = req.body;
 
-    //console.log(params);
+    console.log(params);
 
     user.name = params.name;
     user.surname = params.surname;
@@ -98,6 +102,7 @@ function loginUser(req, res){
 
 
 module.exports = {
+    pruebas,
     saveUser,
     loginUser
 };
