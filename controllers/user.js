@@ -1,8 +1,12 @@
 'use strict';
-
+var fs = require('fs');
+var path = require('path');
 var bcrypt = require('bcrypt-nodejs'); //Trayendo el modulo para encriptar contraseñas
 var User = require('../models/user'); //Trayendo el modelo ya creado
 var jwt = require('../services/jwt');
+
+
+
 
 function pruebas(req, res){
     res.status(200).send({message: 'Probando una acción del controlador de usuarios del API Rest con Node y MongoDB'});
@@ -125,6 +129,7 @@ function uploadImage(req, res){
     //var file_name = 'No subido...';
 
     if (req.files) {
+        //Para hacer el split solamente se pone el separador
         var file_path = req.files.image.path;
         var file_split = file_path.split('/'); //Divide la ruta de la imagen en un vector
         var file_name = file_split[2]; //Captura el nombre de la imagen con la que fue guardada
@@ -154,11 +159,25 @@ function uploadImage(req, res){
 
 }
 
+function getImageFile(req, res){
+    var imageFile = req.params.imageFile;
+    var path_file = './uploads/users/'+imageFile;
+
+    fs.exists(path_file, function(exists){
+        if (exists) {
+            res.sendFile(path.resolve(path_file));
+        }else {
+            res.status(200).send({message: 'No existe la imagen'});
+        }
+    });
+}
+
 
 module.exports = {
     pruebas,
     saveUser,
     loginUser,
     updateUser,
-    uploadImage
+    uploadImage,
+    getImageFile
 };
