@@ -5,9 +5,6 @@ var bcrypt = require('bcrypt-nodejs'); //Trayendo el modulo para encriptar contr
 var User = require('../models/user'); //Trayendo el modelo ya creado
 var jwt = require('../services/jwt');
 
-
-
-
 function pruebas(req, res){
     res.status(200).send({message: 'Probando una acción del controlador de usuarios del API Rest con Node y MongoDB'});
 }
@@ -160,14 +157,14 @@ function uploadImage(req, res){
 }
 
 function getImageFile(req, res){
-    var imageFile = req.params.imageFile;
-    var path_file = './uploads/users/'+imageFile;
+    var imageFile = req.params.imageFile; //Aqui se recoge el nombre de la imagen junto con su extensión
+    var path_file = './uploads/users/'+imageFile; //Esta es la ruta mas el nombre de la imagen
 
     fs.exists(path_file, function(exists){
         if (exists) {
-            res.sendFile(path.resolve(path_file));
+            res.sendFile(path.resolve(path_file)); //Si la imagen existe se envia de vuelta la imagen con ruta
         }else {
-            res.status(200).send({message: 'No existe la imagen'});
+            res.status(200).send({message: 'No existe la imagen'}); //Si no existe envia un mensaje que muestra que la imagen no existe
         }
     });
 }
