@@ -1,13 +1,13 @@
 'use strict';
 
-var fs = require('fs');
+var fs = require('fs'); //Esto es para trabajar con el sistema de ficheros
 var path = require('path');
 
 var Artist = require('../models/artist');
 var Album = require('../models/album');
 var Song = require('../models/song');
 
-function getArtist(req, res){
+/*function getArtist(req, res){
     var artistId = req.params.id;
     Artist.findById(artistId, (err, artist) => {
         if (err) {
@@ -15,7 +15,7 @@ function getArtist(req, res){
         }
     });
     res.status(200).send({message: 'Método get artists del controlador artists.js'});
-}
+}*/
 
 function saveArtist(req, res){
     var artist = new Artist();
