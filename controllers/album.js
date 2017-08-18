@@ -131,11 +131,62 @@ function deleteAlbum(req, res){
     });
 }
 
+
+function uploadImage(req, res){
+    var albumId = req.params.id;
+
+        if (req.files) {
+            //Para hacer el split solamente se pone el separador
+            var file_path = req.files.image.path;
+            var file_split = file_path.split('/'); //Divide la ruta de la imagen en un vector
+            var file_name = file_split[2]; //Captura el nombre de la imagen con la que fue guardada
+            var ext_split = file_name.split('.'); //Hace un nuevo array en donde se captura la extension de la imagen
+            var file_ext = ext_split[1]; //Captura la extension de la imagen
+
+            console.log(file_ext);
+
+            if (file_ext == 'png' || file_ext == 'jpg' || file_ext == 'jpeg') {
+
+                Album.findByIdAndUpdate(albumId, {image: file_name}, (err, albumUpdated) => {
+                    if (!albumUpdated) {
+                        res.status(404).send({message: 'No se ha podido actualizar el usuario'});
+                    }
+                    else {
+                        res.status(404).send({album: albumUpdated});
+                    }
+                });
+            }
+            else {
+                res.status(200).send({message: 'Extension del archivo no valida.'});
+            }
+        }
+        else {
+            res.status(200).send({message: 'No has subido ninguna imagen'});
+        }
+
+
+}
+
+function getImageFile(req, res){
+    var imageFile = req.params.imageFile; //Aqui se recoge el nombre de la imagen junto con su extensión
+    var path_file = './uploads/album/'+imageFile; //Esta es la ruta mas el nombre de la imagen
+
+    fs.exists(path_file, function(exists){
+        if (exists) {
+            res.sendFile(path.resolve(path_file)); //Si la imagen existe se envia de vuelta la imagen con ruta
+        }else {
+            res.status(200).send({message: 'No existe la imagen'}); //Si no existe envia un mensaje que muestra que la imagen no existe
+        }
+    });
+}
+
 module.exports = {
     pruebaAlbum,
     saveAlbum,
     getAlbumById,
     getAllAlbums,
     updateAlbum,
-    deleteAlbum
+    deleteAlbum,
+    uploadImage,
+    getImageFile
 };
