@@ -92,7 +92,7 @@ function loginUser(req, res){
                         }
                     }
                     else {
-                        res.status(404).send({message: 'Contraseña incorrecta, no se ha podido identificar.'});
+                        res.status(404).send({message: 'Contraseña incorrecta, el usuario no se ha podido identificar.'});
                     }
                 });
             }
@@ -104,6 +104,10 @@ function loginUser(req, res){
 function updateUser(req, res){
      var userId = req.params.id; //Se saca de la url el id, el método que se utuliza para modificar es el put
      var update = req.body;
+
+     if (userId != req.user.sub) {
+        return res.status(500).send({message: 'No tienes permiso para actualizar este usuario.'});
+     }
 
      User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
         if (err) {
