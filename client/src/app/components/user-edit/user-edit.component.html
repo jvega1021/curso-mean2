@@ -1,5 +1,5 @@
 <hr/>
-<div class="col-lg-9" *ngIf = "identity">
+<div class="col-lg-11" *ngIf = "identity">
     <h3>{{title}}</h3>
 
     <div class="alert alert-info alert-dismissible fade show" role="alert" *ngIf ="alertMessage">
@@ -40,8 +40,9 @@
             </span>
         </p>
 
+        <!--Imagen del usuario -->
         <div class="image-for-edit" *ngIf = "user.image && user.image != 'null'">
-            <img src="{{url + '/get-image-user/' + user.image}}" class="img-thumbnail" styles="width: 50px;"/>
+            <img src="{{url + '/get-image-user/' + user.image}}" class="img-thumbnail" style="max-width: 70%"/>
         </div>
 
         <hr/>

@@ -66,7 +66,11 @@ export class UserEditComponent implements OnInit {
                               this.user.image = result.image;
                               localStorage.setItem('identity', JSON.stringify(this.user));
 
-                              console.log(this.user);
+                              //Construyendo la url para consultar
+                              let image_path = this.url + '/get-image-user/'+ this.user.image;
+
+                              //Actualizando la imagen
+                              document.getElementById("image-logged").setAttribute('src', image_path);
                           }
                       ).catch(e =>{
                           console.log('Catch: '+e);

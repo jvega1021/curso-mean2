@@ -15,6 +15,12 @@
 
     <nav id="user_logged">
 
+        <!-- Imagen de usuario -->
+        <div class="user-image">
+            <img id = "image-logged" src="{{url + '/get-image-user/' + identity.image}}" class="img-thumbnail" style="max-width: 25%"/>
+        </div>
+
+        <!-- Nombre de usuario -->
         <span id="identity_name"> {{identity.name}} </span>
 
         <button type="button" class="btn btn-outline-danger" (click) = "logOut()">Cerrar Sesión</button>

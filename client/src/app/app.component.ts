@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './models/user';
 import { UserService } from './services/user.service';
+import { GLOBAL } from './services/global';
 
 @Component({
   selector: 'app-root',
@@ -15,10 +16,12 @@ export class AppComponent implements OnInit {
   public token; //Donde se guarda el token recibido del API
   public errorMessage;
   public alertRegister;
+  public url: string;
 
   constructor(private _userService: UserService){
       this.user = new User('', '', '', '', '', 'ROLE_USER', '');
       this.user_register = new User('', '', '', '', '', 'ROLE_USER', '');
+      this.url = GLOBAL.url;
   }
 
   ngOnInit(){
@@ -26,13 +29,10 @@ export class AppComponent implements OnInit {
       this.identity = this._userService.getIdentity();
       this.token = this._userService.getToken();
 
-    //   console.log(this.identity);
-    //   console.log(this.token);
   }
 
   public onSubmitLogin(){
-      //console.log(this.user); //Esto es lo que me esta llegando del formulario.
-
+      
       //Conseguir los datos del usuario identificado.
       this._userService.signUp(this.user).subscribe( response => {
 
