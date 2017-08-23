@@ -9,6 +9,7 @@
       </button>
 
       {{alertMessage}}
+
     </div>
 
     <form #userUpdateForm = "ngForm" (ngSubmit) = "onSubmit()" class="col-md-10">
@@ -37,6 +38,16 @@
             <span *ngIf = "!email.valid && email.touched">
                 <small>El e-mail es obligatorio.</small>
             </span>
+        </p>
+
+        <div class="image-for-edit" *ngIf = "user.image && user.image != 'null'">
+            <img src="{{url + '/get-image-user/' + user.image}}" class="img-thumbnail" styles="width: 50px;"/>
+        </div>
+
+        <hr/>
+        <p>
+            <label><strong>Sube tu foto:</strong></label>
+            <input class="form-control" type="file" placeholder="Subir imagen" (change) = "fileChangeEvent($event)"/>
         </p>
 
 

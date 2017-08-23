@@ -105,8 +105,9 @@ function updateUser(req, res){
      var userId = req.params.id; //Se saca de la url el id, el método que se utuliza para modificar es el put
      var update = req.body;
 
+     //Coprobamos que el userId sea igual al que esta en el token.
      if (userId != req.user.sub) {
-        return res.status(500).send({message: 'No tienes permiso para actualizar este usuario.'});
+        return (res.status(500).send({message: 'No tienes permiso para actualizar este usuario.'}));
      }
 
      User.findByIdAndUpdate(userId, update, (err, userUpdated) => {
@@ -119,7 +120,7 @@ function updateUser(req, res){
                 res.status(404).send({message: 'No se ha podido actualizar el usuario'});
             }
             else {
-                res.status(200).send({user: userUpdated});
+                res.status(200).send({user: update});
             }
         }
      });
@@ -146,7 +147,7 @@ function uploadImage(req, res){
                     res.status(404).send({message: 'No se ha podido actualizar el usuario'});
                 }
                 else {
-                    res.status(404).send({image: file_name, user: userUpdated});
+                    res.status(200).send({image: file_name, user: userUpdated});
                 }
             });
         }
