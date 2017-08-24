@@ -1,0 +1,25 @@
+<h1 class="title">{{title}}</h1>
+
+<form #formAddArtist = "ngForm" (ngSubmit) = "onSubmit()" class="col-md-12 form-add-artist">
+
+  <p>
+    <label>Nombre: </label>
+    <input type="text" name="name" #name="ngModel" [(ngModel)] = "artist.name" required class="form-control"/>
+    <span *ngIf = "!name.valid && name.touched">
+      <small> El nombre es obligatorio.</small>
+    </span>
+  </p>
+
+
+  <p>
+    <label>Descripción: </label>
+    <textarea  name="description" #description="ngModel" [(ngModel)] = "artist.description" required class="form-control"></textarea>
+    <span *ngIf = "!description.valid && description.touched">
+      <small> Debe ingresar la descripción.</small>
+    </span>
+  </p>
+
+  <input type="submit" value="Crear artista" [disabled] = "!formAddArtist.form.valid" class="btn btn-outline-primary" />
+
+  
+</form>

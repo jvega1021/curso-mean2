@@ -1,11 +1,11 @@
 .formulario-add-user{
-    padding-left: 12%;
-    padding-right: 12%;
-
+    padding-left: 25%;
+    padding-right: 25%;
 }
 
 .title{
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .image-for-edit {
@@ -17,7 +17,6 @@
 }
 
 .btn-actualizar{
-
     text-align: center;
     margin-top: 5%;
     margin-bottom: 5%;
