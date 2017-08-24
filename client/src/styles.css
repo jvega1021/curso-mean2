@@ -2,7 +2,13 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "~font-awesome/css/font-awesome.css";
 
-body{
+html, body{
     background-color: #e6e6e6;
-    padding-top: 5rem;
+    margin: 0%;
+    height: 100%;
+}
+
+.container{
+    padding-top: 80px;
+
 }

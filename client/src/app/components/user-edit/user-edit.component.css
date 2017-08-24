@@ -1,0 +1,24 @@
+.formulario-add-user{
+    padding-left: 12%;
+    padding-right: 12%;
+
+}
+
+.title{
+    text-align: center;
+}
+
+.image-for-edit {
+    text-align: center;
+}
+
+.image-for-edit img{
+    max-width: 40%;
+}
+
+.btn-actualizar{
+
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
