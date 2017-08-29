@@ -32,12 +32,12 @@
       <div class="card-block">
 
         <h3 class="card-title">
-          <a href="#"> {{ artist.name }} </a>
+          <a href="#"  class="title-artist" [routerLink] = "['/artista', artist._id]" > {{ artist.name }} </a>
         </h3>
 
         <img src="{{ url + '/get-image-artist/' + artist.image }}" class=" img-thumbnail"/>
 
-        <div class="buttons" *ngIf = "identity.role == 'ROLE_ADMIN'">
+        <div *ngIf = "identity.role == 'ROLE_ADMIN'">
 
           <a class="btn btn-sm btn-outline-warning" [routerLink] = "['/editar-artista', artist._id]">
             Editar
@@ -46,6 +46,7 @@
           <a class="btn btn-sm btn-outline-danger" href="#">
             Borrar
           </a>
+
         </div>
       </div>
     </div>

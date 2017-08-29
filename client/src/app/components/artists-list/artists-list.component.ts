@@ -56,7 +56,6 @@ export class ArtistsListComponent implements OnInit {
         if(this.prev_page == 0){
           this.prev_page = 1;
         }
-
       }
 
       this._artistService.getArtists(this.token, page).subscribe(
