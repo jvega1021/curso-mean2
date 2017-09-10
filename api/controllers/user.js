@@ -26,6 +26,7 @@ function saveUser(req, res){
     if (params.password) {
         //Encriptar contraseña
         bcrypt.hash(params.password, null, null, function (err, hash) {
+
             //La contraseña guardada ahora es igual cl codigo hash
             user.password = hash;
 

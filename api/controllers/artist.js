@@ -69,7 +69,7 @@ function getAllArtist (req, res){
         page = 1;
     }
 
-    var itemsPerPage = 2;
+    var itemsPerPage = 4;
 
     //.sort() es para ordenar en orden alfabetico por name
     Artist.find().sort('name').paginate(page, itemsPerPage, (err, artists, total) => {
@@ -181,7 +181,7 @@ function uploadImage(req, res){
                         res.status(404).send({message: 'No se ha podido actualizar el usuario'});
                     }
                     else {
-                        res.status(404).send({user: artistUpdated});
+                        res.status(200).send({user: artistUpdated});
                     }
                 });
             }

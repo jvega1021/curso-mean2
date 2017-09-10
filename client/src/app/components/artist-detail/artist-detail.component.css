@@ -1,0 +1,14 @@
+.img-artist{
+
+  width: 200px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+  border: 1px;
+}
+
+#artist-head-card{
+
+  text-align: center;
+  overflow: hidden;
+  
+}

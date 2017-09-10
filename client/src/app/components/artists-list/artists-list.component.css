@@ -1,0 +1,14 @@
+
+.card{
+  text-align: center;
+}
+
+.img-thumbnail{
+  width: 150px;
+  margin-bottom: 15px;
+}
+
+.title-artist {
+  /*text-decoration: none;*/
+  color: #535352;
+}

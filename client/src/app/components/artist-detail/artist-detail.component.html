@@ -1,0 +1,22 @@
+<div *ngIf = "artist" class="">
+
+  <div id="artist-head-card">
+
+    <img src="{{ url + '/get-image-artist/' + artist.image }}" class=" img-artist" *ngIf = "artist.image && artist.image != 'nul'" />
+
+    <h1> {{artist.name}} </h1>
+    <p>
+      {{artist.description}}
+    </p>
+
+    <a *ngIf = "identity.role == 'ROLE_ADMIN'" href="#" class="btn btn-outline-info">Añadir Album</a>
+    
+  </div>
+
+  <hr/>
+
+  <div class="gallery-albums" *ngIf = "albums">
+    <!-- Listar los albums -->
+  </div>
+
+</div>

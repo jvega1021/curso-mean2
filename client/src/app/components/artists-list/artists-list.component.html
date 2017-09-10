@@ -6,4 +6,49 @@
     <a *ngIf = "identity && identity.role == 'ROLE_ADMIN'" class="btn btn-secondary" role="button" [routerLink] = "['/crear-artista']">
       Añadir artista
     </a>
+    <hr/>
+    <ul class="pagination">
+
+      <li class="page-item">
+        <a class="page-link" [routerLink] = "['/artistas', prev_page]" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+          <span class="sr-only">Previous</span>
+        </a>
+      </li>
+
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next" [routerLink] = "['/artistas', next_page]">
+          <span aria-hidden="true">&raquo;</span>
+          <span class="sr-only">Next</span>
+        </a>
+      </li>
+
+  </ul>
+</div>
+
+<div class="row" *ngIf = "identity">
+  <div class="col-sm-3" *ngFor = "let artist of artists">
+    <div class="card">
+      <div class="card-block">
+
+        <h3 class="card-title">
+          <a href="#"  class="title-artist" [routerLink] = "['/artista', artist._id]" > {{ artist.name }} </a>
+        </h3>
+
+        <img src="{{ url + '/get-image-artist/' + artist.image }}" class=" img-thumbnail"/>
+
+        <div *ngIf = "identity.role == 'ROLE_ADMIN'">
+
+          <a class="btn btn-sm btn-outline-warning" [routerLink] = "['/editar-artista', artist._id]">
+            Editar
+          </a>
+
+          <a class="btn btn-sm btn-outline-danger" href="#">
+            Borrar
+          </a>
+
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
